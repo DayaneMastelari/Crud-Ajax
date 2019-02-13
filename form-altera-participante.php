@@ -21,12 +21,12 @@
     	<div class="page-header container">
         	<h1>Alterando Participante</h1>
         </div>
-        <form action="altera-paciente.php" method="post" class="container"> 
+        <form action="" method="post" class="container" id="formulario-altera-participante"> 
             <input type="hidden" name="id" value="<?=$participante->getId()?>">
             <div class="row">
                 <div class="form-group col-md-6">
                     <label for="nome">Nome</label>
-                    <input name="nome" class="form-control" type="text" value="<?=$participante->getNome()?>">
+                    <input name="nome" class="form-control" type="text" value="">
                 </div>
                 <div class="form-group col-md-6">
                     <div class="row">
@@ -34,7 +34,7 @@
                             <label for="cpf">CPF</label>
                         </div>
                         <div class="col-md-6">
-                            <input name="cpf" class="form-control" type="text" value="<?=$participante->getCpf()?>">
+                            <input name="cpf" class="form-control" type="text" value="">
                         </div>
                     </div>
                 </div>
@@ -43,7 +43,7 @@
             <div class="row">
                 <div class="form-group col-sm-6 col-md-6 col-lg-6">
                     <label for="email">Email</label>
-                    <input name="email" class="form-control" type="email" value="<?=$participante->getEmail()?>">
+                    <input name="email" class="form-control" type="email" value="">
                 </div>
                 <div class="form-group col-sm-6 col-md-6 col-lg-6">
                     <div class="row">
@@ -51,7 +51,7 @@
                             <label for="cidade">Cidade</label>
                         </div>
                         <div class="col-md-6">
-                            <input name="cidade" id="cidade" class="form-control" type="text" value="<?=$participante->getCidade()?>"> 
+                            <input name="cidade" id="cidade" class="form-control" type="text" value="?>"> 
                         </div>
                     </div>
                 </div>
@@ -62,7 +62,7 @@
                     <div class="row">
                         <label class="control-label col-md-12" for="cep">CEP</label>
                         <div class="col-md-6">
-                            <input name="cep" class="form-control" type="text" value="<?=$participante->getCep()?>">
+                            <input name="cep" class="form-control" type="text" value="">
                         </div>
                     </div>
                 </div>
@@ -72,7 +72,7 @@
                             <label for="tel">Telefone</label>
                         </div>
                         <div class="col-md-6">
-                            <input name="telefone" class="form-control" type="tel" value="<?=$participante->getTelefone()?>">
+                            <input name="telefone" class="form-control" type="tel" value="">
                         </div>
                     </div>
                 </div>
@@ -81,7 +81,7 @@
             <div class="row">                
                 <div class="form-group col-sm-6 col-md6 col-lg-6">
                     <label for="endereco">Endereço</label>
-                    <input name="endereco" class="form-control" type="text" value="<?=$participante->getEndereco()?>">
+                    <input name="endereco" class="form-control" type="text" value="">
                 </div>
                 <div class="form-group col-sm-3 col-md-3 col-lg-3">
                     <label for="estado">Estado</label>
@@ -125,7 +125,7 @@
                             <label for="bairro">Bairro</label>
                         </div>
                         <div class="col-md-6">
-                            <input name="bairro" class="form-control" type="text" value="<?=$participante->getBairro()?>">
+                            <input name="bairro" class="form-control" type="text" value="">
                         </div>
                     </div>
                 </div>
@@ -135,13 +135,13 @@
                             <label for="nasc">Nascimento</label>
                         </div>
                         <div class="col-md-6">
-                            <input name="nascimento" class="form-control" type="text" value="<?=$participante->getNascimento()?>">
+                            <input name="nascimento" class="form-control" type="text" value="">
                         </div>
                     </div>
                 </div> 
             </div>
             <div class="form-group col-md6">
-                <button class="btn btn-primary btn-lg" type="submit">Gravar</button>
+                <button class="btn btn-primary btn-lg" type="submit" id="altera-participante">Gravar</button>
             </div> 
         </form>
     </body>
