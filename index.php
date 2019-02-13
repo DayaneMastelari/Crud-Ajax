@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="estilo.css">
     <script src="bootstrap/jquery.js"></script>
+    <script src="ajax.js"></script>
     <title>Cadastro Sorteio</title>
 </head>
     <body>
@@ -15,7 +16,7 @@
     	<div class="page-header container">
         	<h1>Participe do Sorteio</h1>
         </div>
-        <form action="adiciona-participante.php" method="post" class="container"> 
+        <form action="" method="post" class="container" id="formulario-cadastro"> 
             <div class="row">
                 <div class="form-group col-md-6">
                     <label for="nome">Nome</label>
@@ -133,7 +134,10 @@
                 </div> 
             </div>
             <div class="form-group col-md6">
-                <button class="btn btn-primary btn-lg" type="submit">Gravar</button>
+                <button class="btn btn-primary btn-lg" type="submit" id="enviar">Gravar</button>
+            </div>
+            <div>
+                <p id="resultado"></p>
             </div> 
         </form>
     </body>

@@ -11,3 +11,28 @@ $(document).ready(function(){
 		}
 	});
 });
+
+$(function(){
+
+	$('#formulario-cadastro').submit(function(event){
+		event.preventDefault();
+		var formDados = new FormData($(this)[0]);
+
+		$.ajax({
+			url:'cadastraParticipante.php',
+			type:'POST',
+			data:formDados,
+			cache:false,
+			contentType:false,
+			processData:false,
+			success:function (data)
+     {document.getElementById('resultado').innerHTML = 'Cadastrado com sucesso.';
+			  $('#envia_msg').each (function(){
+			this.reset();
+           });
+	  },
+			dataType:'html'
+		});
+		return false;
+	});
+});
