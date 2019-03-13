@@ -2,6 +2,9 @@
 
 require_once("conecta.php");
 
+echo "antes";
+print_r($_POST);
+
 $nome  = $_POST['nome'];
 $cpf  = $_POST['cpf'];
 $email  = $_POST['email'];
@@ -15,11 +18,14 @@ $nascimento  = $_POST['nascimento'];
 $id = $_POST['id'];
 
 
-$query = "update participantes set nome = '{nome}', cpf = '{cpf}', email = '{email}', 
-            cidade = '{cidade}', cep = '{cep}', telefone = '{telefone}', 
-            endereco = '{endereco}', estado = '{estado}', bairro = '{bairro}', 
-            nascimento = '{nascimento}' where id = '{id}'";
+$query = "update participantes set nome = '{$nome}', cpf = '{$cpf}', email = '{$email}', 
+            cidade = '{$cidade}', cep = '{$cep}', telefone = '{$telefone}', 
+            endereco = '{$endereco}', estado = '{$estado}', bairro = '{$bairro}', 
+            nascimento = '{$nascimento}' where id = '{$id}'";
     
-$conexao->query($query);
+
+echo $query;
+$conecta = $conexao->query($query);
+echo $conecta;
 
 ?>

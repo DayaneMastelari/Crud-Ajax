@@ -4,7 +4,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="estilo.css">
     <script src="bootstrap/jquery.js"></script>
     <script src="ajax.js"></script>
     <title>Cadastro Sorteio</title>
@@ -14,7 +13,7 @@
     		require_once("menu.php");
     	?>
     	<div class="page-header container">
-        	<h1>Participe do Sorteio</h1>
+        	<h1 id="mudar">Participe do Sorteio</h1>
         </div>
         <form action="" method="post" class="container" id="formulario-cadastro"> 
             <div class="row">

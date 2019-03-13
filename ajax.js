@@ -1,4 +1,6 @@
-$(document).ready(function listaParticipante(){
+$(document).ready();
+
+$(function listar(){
 	$('#tabela').empty();
 	$.ajax({
 		type:'post',
@@ -6,57 +8,51 @@ $(document).ready(function listaParticipante(){
 		url: 'listaParticipante.php',
 		success: function(dados){
 			for(var i=0;dados.length>i;i++){
-				$('#tabela').append('<tr><td>'+dados[i].nome+'</td><td>'+dados[i].telefone+'</td><td>'+dados[i].email+'</td></tr>');
+				var alterar = '<a class="btn btn-default" href="form-altera-participante.php?id=' +dados[i].id + '"><span class="glyphicon glyphicon-pencil"></span></a>';
+				var remover = '<a class="btn btn-default" href="remove-participante.php?id=' + dados[i].id + '"><span class="glyphicon glyphicon-trash"></span></a>';
+				$('#tabela').append('<tr><td>'+dados[i].nome+'</td><td>'+dados[i].telefone+'</td><td>'+dados[i].email+'</td><td>' + alterar + '</td><td>' + remover + '</td></tr>');
+
 			}
 		}
 	});
 });
 
-$(function CadastoParticipante(){
+$(function cadastrar(){
 
 	$('#formulario-cadastro').submit(function(event){
 		event.preventDefault();
-		var formDados = new FormData($(this)[0]);
+		var formDados = $("#formulario-cadastro").serialize();
 
 		$.ajax({
 			url:'cadastraParticipante.php',
 			type:'POST',
 			data:formDados,
 			cache:false,
-			contentType:false,
-			processData:false,
-			success:function (data)
-     {document.getElementById('resultado').innerHTML = 'Cadastrado com sucesso.';
-			  $('#envia_msg').each (function(){
-			this.reset();
-           });
-	  },
-			dataType:'html'
+			dataType:'html',
+			success: function(data){
+				console.log(data);
+				$("#resultado").html(data);
+			}
 		});
 		return false;
 	});
 });
 
-$(function atualizaParticipante(){
+$(function atualiza(){
 
-	$('#formulario-cadastro').submit(function(event){
-		event.preventDefault();
-		var formDados = new FormData($(this)[0]);
+	$('#formulario-altera-participante').submit(function(){
+		var formDados = $("#formulario-altera-participante").serialize();
 
 		$.ajax({
 			url:'atualizaParticipante.php',
 			type:'POST',
 			data:formDados,
 			cache:false,
-			contentType:false,
-			processData:false,
-			success:function (data)
-     {document.getElementById('resultado').innerHTML = 'Alteraro com sucesso.';
-			  $('#envia_msg').each (function(){
-			this.reset();
-           });
-	  },
-			dataType:'html'
+			dataType: 'html',
+			success: function(data){
+				console.log(data);
+				$("#resultado").html(data);
+		   }
 		});
 		return false;
 	});
@@ -74,9 +70,3 @@ $(document).ready(function buscaParticipante(){
 		}
 	});
 });
-
-/*for(var i=0;dados.length>i;i++){
-	$('#formulario-altera-participante').append('<tr><td>'+dados[i].nome+'</td><td>'+dados[i].telefone+'</td><td>'+dados[i].email+'</td></tr>');
-}*/
-
-

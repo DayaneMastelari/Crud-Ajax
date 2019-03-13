@@ -4,29 +4,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="estilo.css">
     <script src="bootstrap/jquery.js"></script>
+    <script src="ajax.js"></script>
     <title>Cadastro Sorteio</title>
 </head>
     <body>
     	<?php
             require_once("menu.php");
+
             require_once("class/Participante.php");
             require_once("class/ParticipanteDao.php");
 
             $participanteDao = new ParticipanteDao($conexao);
             $id = $_GET['id'];
             $participante = $participanteDao->buscaParticipante($id);
-    	?>
+        ?>
     	<div class="page-header container">
-        	<h1>Alterando Participante</h1>
+        	<h1 id="texto">Alterando Participante</h1> 
+                      
         </div>
-        <form action="" method="post" class="container" id="formulario-altera-participante"> 
-            <input type="hidden" name="id" value="<?=$participante->getId()?>">
+            <form action="" method="post" class="container" id="formulario-altera-participante">
+            <input type="hidden" name="id" value="<?=$participante->getId()?>"> 
             <div class="row">
                 <div class="form-group col-md-6">
                     <label for="nome">Nome</label>
-                    <input name="nome" class="form-control" type="text" value="">
+                    <input name="nome" id="nome" class="form-control" type="text" value=<?=$participante->getNome()?> >
                 </div>
                 <div class="form-group col-md-6">
                     <div class="row">
@@ -34,7 +36,7 @@
                             <label for="cpf">CPF</label>
                         </div>
                         <div class="col-md-6">
-                            <input name="cpf" class="form-control" type="text" value="">
+                            <input name="cpf" id="cpf" class="form-control" type="text" value=<?=$participante->getCpf()?> >
                         </div>
                     </div>
                 </div>
@@ -43,7 +45,7 @@
             <div class="row">
                 <div class="form-group col-sm-6 col-md-6 col-lg-6">
                     <label for="email">Email</label>
-                    <input name="email" class="form-control" type="email" value="">
+                    <input name="email" id="email" class="form-control" type="email" value=<?=$participante->getEmail()?> ">
                 </div>
                 <div class="form-group col-sm-6 col-md-6 col-lg-6">
                     <div class="row">
@@ -51,7 +53,7 @@
                             <label for="cidade">Cidade</label>
                         </div>
                         <div class="col-md-6">
-                            <input name="cidade" id="cidade" class="form-control" type="text" value="?>"> 
+                            <input name="cidade" id="cidade" class="form-control" type="text" value=<?=$participante->getCidade()?> > 
                         </div>
                     </div>
                 </div>
@@ -62,7 +64,7 @@
                     <div class="row">
                         <label class="control-label col-md-12" for="cep">CEP</label>
                         <div class="col-md-6">
-                            <input name="cep" class="form-control" type="text" value="">
+                            <input name="cep" id="cep" class="form-control" type="text" value=<?=$participante->getCep()?>>
                         </div>
                     </div>
                 </div>
@@ -72,7 +74,7 @@
                             <label for="tel">Telefone</label>
                         </div>
                         <div class="col-md-6">
-                            <input name="telefone" class="form-control" type="tel" value="">
+                            <input name="telefone" id="tel" class="form-control" type="tel" value=<?=$participante->getTelefone()?>>
                         </div>
                     </div>
                 </div>
@@ -81,13 +83,13 @@
             <div class="row">                
                 <div class="form-group col-sm-6 col-md6 col-lg-6">
                     <label for="endereco">Endereço</label>
-                    <input name="endereco" class="form-control" type="text" value="">
+                    <input name="endereco" id="endereco" class="form-control" type="text" value=<?=$participante->getEndereco()?>>
                 </div>
                 <div class="form-group col-sm-3 col-md-3 col-lg-3">
                     <label for="estado">Estado</label>
                     <select name="estado" class="form-control">
                         <option><?=$participante->getEstado()?></option>
-                        <option value="Acre">Acre</option>
+                        <option value="AC">AC</option>
                         <option value="AL">AL</option>
                         <option value="AP">AP</option>
                         <option value="AM">AM</option>
@@ -125,7 +127,7 @@
                             <label for="bairro">Bairro</label>
                         </div>
                         <div class="col-md-6">
-                            <input name="bairro" class="form-control" type="text" value="">
+                            <input name="bairro" id="bairro" class="form-control" type="text" value=<?=$participante->getBairro()?>>
                         </div>
                     </div>
                 </div>
@@ -135,13 +137,16 @@
                             <label for="nasc">Nascimento</label>
                         </div>
                         <div class="col-md-6">
-                            <input name="nascimento" class="form-control" type="text" value="">
+                            <input name="nascimento" id="nasc" class="form-control" type="text" value=<?=$participante->getNascimento()?>>
                         </div>
                     </div>
                 </div> 
             </div>
             <div class="form-group col-md6">
-                <button class="btn btn-primary btn-lg" type="submit" id="altera-participante">Gravar</button>
+                <button class="btn btn-primary btn-lg" type="submit">Atualizar</button>
+            </div>
+            <div>
+                <p id="resultado"></p>
             </div> 
         </form>
     </body>
