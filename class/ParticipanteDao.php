@@ -33,7 +33,6 @@ require_once("Participante.php");
     
         function removeParticipante($id) {
             $query = "delete from participantes where id = {$id}";
-    
             return mysqli_query($this->conexao, $query);
         }
 

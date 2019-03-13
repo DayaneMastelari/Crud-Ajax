@@ -9,7 +9,7 @@ $(function listar(){
 		success: function(dados){
 			for(var i=0;dados.length>i;i++){
 				var alterar = '<a class="btn btn-default" href="form-altera-participante.php?id=' +dados[i].id + '"><span class="glyphicon glyphicon-pencil"></span></a>';
-				var remover = '<a class="btn btn-default" href="remove-participante.php?id=' + dados[i].id + '"><span class="glyphicon glyphicon-trash"></span></a>';
+				var remover = '<a class="btn btn-default" href="?id=' + dados[i].id + '"><span class="glyphicon glyphicon-trash"></span></a>';
 				$('#tabela').append('<tr><td>'+dados[i].nome+'</td><td>'+dados[i].telefone+'</td><td>'+dados[i].email+'</td><td>' + alterar + '</td><td>' + remover + '</td></tr>');
 
 			}
@@ -38,9 +38,10 @@ $(function cadastrar(){
 	});
 });
 
-$(function atualiza(){
+$(function atualizar(){
 
-	$('#formulario-altera-participante').submit(function(){
+	$('#formulario-altera-participante').submit(function(event){
+		event.preventDefault();
 		var formDados = $("#formulario-altera-participante").serialize();
 
 		$.ajax({
@@ -48,25 +49,26 @@ $(function atualiza(){
 			type:'POST',
 			data:formDados,
 			cache:false,
-			dataType: 'html',
+			dataType:'html',
 			success: function(data){
 				console.log(data);
 				$("#resultado").html(data);
-		   }
+			}
 		});
 		return false;
 	});
 });
 
-$(document).ready(function buscaParticipante(){
-	$('#formulario-altera-participante').empty();
-	$.ajax({
-		type:'post',
-		dataType: 'json',
-		url: 'listaParticipante.php',
-		success: function(dados){
-			$('#nome').value(dados.nome);
-			
-		}
+$(function remove(id){
+	$(document).on("click", "#remover", function(){
+
+		$.ajax({
+			url: remove-participante.php,
+			type : "POST",
+			dataType : "id=" + id,
+			success: function(data){
+				$("td"+id).remove();
+			  }
+		})
 	});
 });

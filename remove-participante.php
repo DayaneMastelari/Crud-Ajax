@@ -8,6 +8,6 @@
 
     $id = $_POST['id'];
     $participanteDao->removeParticipante($id);
-    header("Location: form-lista-participantes.php");
+    //header("Location: form-lista-participantes.php");
 
 ?>
